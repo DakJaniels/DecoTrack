@@ -6,6 +6,9 @@
 
 > Automatically maintain a database of your furniture items across all homes, characters, banks, storage coffers, and storage chests in The Elder Scrolls Online.
 
+![DecoTrack Example](https://github.com/DakJaniels/DecoTrack/raw/26177ef79e852096e818702e66b570ffd451df20/example.jpg)
+*Example of DecoTrack's furniture tracking interface*
+
 ## Features
 
 - 🔄 **Automatic Tracking**: Automatically catalogs furniture as you:
