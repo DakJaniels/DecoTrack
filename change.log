@@ -9,6 +9,7 @@ All notable changes to DecoTrack will be documented in this file.
 
 ### Changed
 - API update for Update 46
+- New Dependencies, LibChatMessage
 - Reset SavedVariables (requires visiting houses again)
 
 ## [2.5] - 2023-03-11
