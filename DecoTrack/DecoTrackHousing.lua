@@ -92,7 +92,7 @@ function DT.UpdateCurrentHouse()
         if furnitureId ~= nil then
             itemId = DT.GetItemId(furnitureId)
             if nil ~= itemId then
-                local link = GetPlacedFurnitureLink(furnitureId)
+                local link = GetPlacedFurnitureLink(furnitureId, LINK_STYLE_DEFAULT)
                 local bound = IsItemLinkBound(link)
                 DT.AddHouseItem(house, itemId, nil, bound)
             end
@@ -115,7 +115,8 @@ function DT.UpdateBag(bagId)
     end
     local itemId, stackSize
 
-    for slotIndex = 0, GetBagSize(bagId) - 1 do
+    -- Use ZO_IterateBagSlots for robust slot iteration (no fallback needed)
+    for slotIndex in ZO_IterateBagSlots(bagId) do
         if IsItemPlaceableFurniture(bagId, slotIndex) then
             itemId = GetItemId(bagId, slotIndex)
             stackSize = GetSlotStackSize(bagId, slotIndex)
@@ -130,7 +131,7 @@ function DT.UpdateBag(bagId)
     if bagId == BAG_BANK then
         bagId = BAG_SUBSCRIBER_BANK
 
-        for slotIndex = 0, GetBagSize(bagId) - 1 do
+        for slotIndex in ZO_IterateBagSlots(bagId) do
             if IsItemPlaceableFurniture(bagId, slotIndex) then
                 itemId = GetItemId(bagId, slotIndex)
                 stackSize = GetSlotStackSize(bagId, slotIndex)
@@ -159,6 +160,9 @@ function DT.UpdateCallback()
 
     for bagId, _ in pairs(DT.BAG_IDS) do
         if bagId ~= BAG_SUBSCRIBER_BANK then
+            DT.UpdateBag(bagId)
+        end
+        if bagId == BAG_FURNITURE_VAULT then
             DT.UpdateBag(bagId)
         end
     end

@@ -52,7 +52,7 @@ function DT.GetFurnitureLink(id)
 end
 
 ---@param link string The furniture or collectible link to parse
----@return string|integer|nil itemId The extracted item ID from the link, or nil if invalid
+---@return string|number|nil itemId The extracted item ID from the link, or nil if invalid
 function DT.GetFurnitureLinkItemId(link)
     if nil == link or "" == link then
         return nil
@@ -71,24 +71,30 @@ function DT.GetFurnitureLinkItemId(link)
     local colonIndex = string.find(link, ":", startIndex + 1)
     local pipeIndex = string.find(link, "|", startIndex + 1)
 
-    if nil == colonIndex and nil == pipeIndex then return nil end
-    if nil ~= colonIndex and nil ~= pipeIndex then colonIndex = math.min(colonIndex, pipeIndex) end
+    if nil == colonIndex and nil == pipeIndex then
+        return nil
+    end
 
-    return tonumber(string.sub(link, startIndex, (nil ~= colonIndex and colonIndex or pipeIndex) - 1))
+    if nil ~= colonIndex and nil ~= pipeIndex then
+        colonIndex = math.min(colonIndex, pipeIndex)
+    end
+
+    local itemId = assert(tonumber(string.sub(link, startIndex, (nil ~= colonIndex and colonIndex or pipeIndex) - 1)))
+    return itemId
 end
 
 ---@param id id64 The placed furniture ID
----@return integer|nil itemId The furniture item ID if found, nil otherwise
+---@return number|nil itemId The furniture item ID if found, nil otherwise
 ---@return string|nil link The furniture link if found, nil otherwise
 function DT.GetFurnitureItemId(id)
     local link = DT.GetFurnitureLink(id)
-    return DT.GetFurnitureLinkItemId(link), link
+    local itemId = assert(tonumber(DT.GetFurnitureLinkItemId(link)))
+    return itemId, link
 end
 
 ---@param itemId integer|string The item ID to create a link for
 ---@return string|nil link The created furniture or collectible link, or nil if invalid
 function DT.GetFurnitureItemIdLink(itemId)
-    itemId = tonumber(itemId)
     if nil == itemId then
         return nil
     end

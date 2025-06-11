@@ -61,7 +61,18 @@ function DT.OnBankAccess(event, bagId)
     end
 end
 
-function DT.OnItemSlotChanged(event, bagId, slotId, isNew, itemSoundCategory, updateReason, stackCountChange)
+--- @param eventId integer
+--- @param bagId Bag
+--- @param slotIndex integer
+--- @param isNewItem boolean
+--- @param itemSoundCategory ItemUISoundCategory
+--- @param inventoryUpdateReason integer
+--- @param stackCountChange integer
+--- @param triggeredByCharacterName string?
+--- @param triggeredByDisplayName string?
+--- @param isLastUpdateForMessage boolean
+--- @param bonusDropSource BonusDropSource
+function DT.OnItemSlotChanged(eventId, bagId, slotIndex, isNewItem, itemSoundCategory, inventoryUpdateReason, stackCountChange, triggeredByCharacterName, triggeredByDisplayName, isLastUpdateForMessage, bonusDropSource)
     DT.QueueUpdate(stackCountChange)
 end
 
