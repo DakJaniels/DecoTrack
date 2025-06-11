@@ -1,6 +1,9 @@
 ---@class (partial) DecoTrack
 local DT = DecoTrack
 
+-- Interoperability --
+local Interop = DT.Interop
+
 -- Utility Methods --
 
 ---
@@ -14,10 +17,10 @@ local function trim(s)
     end
 end
 
--- Interoperability --
-local Interop = ZO_CallbackObject:Subclass()
+local CALLBACK_MANAGER = ZO_CallbackObject:Subclass()
+Interop.CallbackManager = CALLBACK_MANAGER:New()
 
-function Interop:OnFullUpdate()
+function Interop.CallbackManager:OnFullUpdate()
     if not self.IsFiringCallbacks then
         self.IsFiringCallbacks = true
         self:FireCallbacks("FullUpdate", self)
@@ -25,11 +28,11 @@ function Interop:OnFullUpdate()
     end
 end
 
-function Interop:GetAPI()
+function Interop.GetAPI()
     return 5
 end
 
-function Interop:GetCountsByItemId(pItemId)
+function Interop.GetCountsByItemId(pItemId)
     local containers = {}
     local boundContainers = {}
 
@@ -52,7 +55,7 @@ function Interop:GetCountsByItemId(pItemId)
     return containers, boundContainers
 end
 
-function Interop:AddSearchResult(results, category, link, count, boundCount, containerName)
+function Interop.AddSearchResult(results, category, link, count, boundCount, containerName)
     local categoryObj = results.Categories[category]
     if not categoryObj then
         categoryObj =
@@ -176,7 +179,7 @@ local function IsMatch(compiledFilter, expression)
     return true
 end
 
-function Interop:Search(search)
+function Interop.Search(search)
     local results = { Count = 0, BoundCount = 0, Categories = {} }
     local matched
 
@@ -190,7 +193,7 @@ function Interop:Search(search)
 
             if IsMatch(filter, string.format("%s\n%s\n%s", tostring(name), tostring(category), tostring(container.HouseName))) then
                 local boundCount = container.BoundItems[itemId] or 0
-                Interop:AddSearchResult(results, category, link, count, boundCount, container.HouseName)
+                Interop.AddSearchResult(results, category, link, count, boundCount, container.HouseName)
             end
         end
     end
@@ -198,7 +201,7 @@ function Interop:Search(search)
     return results
 end
 
-function Interop:HasVisitedAllOwnedHomes()
+function Interop.HasVisitedAllOwnedHomes()
     if nil == DT.hasVisitedAllOwnedHomes then
         DT.hasVisitedAllOwnedHomes = {}
 

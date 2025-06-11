@@ -170,7 +170,7 @@ function DT.UpdateCallback()
     DT.IsDirty = false
     DT.UpdateCount = 0
     eventManager:RegisterForUpdate("DecoTrack.PrioritySave", DT.PRIORITY_SAVE_INTERVAL, DT.DeferredPrioritySave)
-    Interop:OnFullUpdate()
+    Interop.CallbackManager:OnFullUpdate()
 end
 
 function DT.QueueUpdate(changeCount)

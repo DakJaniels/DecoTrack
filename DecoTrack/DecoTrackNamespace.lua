@@ -2,7 +2,7 @@
 DecoTrack =
 {
     ADDON_NAME = "DecoTrack",
-    ADDON_VERSION = "2.7",
+    ADDON_VERSION = "2.7.1",
     ADDON_AUTHOR = "@Cardinal05, @Architectura",
     JUMP_TIMEOUT = 1000 * 15,
     UPDATE_DELAY = 1000 * 1,
@@ -43,7 +43,8 @@ DecoTrack =
     JumpToHouseId = 0,
     UpdateCount = 0,
     IsDirty = false,
-    chat = LibChatMessage.Create("DecoTrack", "DT")
+    chat = LibChatMessage.Create("DecoTrack", "DT"),
+    Interop = {}
 }
 
 DecoTrack.__index = DecoTrack
