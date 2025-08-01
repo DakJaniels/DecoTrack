@@ -72,6 +72,34 @@ function DT.InitSettings()
                      type = "custom",
                  })
 
+    table.insert(options,
+                 {
+                     type = "header",
+                     name = "Update Timing",
+                 })
+
+    table.insert(options,
+                 {
+                     type = "slider",
+                     name = "House Update Delay",
+                     tooltip = "The delay (in seconds) between visiting houses during automatic updates.\nIncrease this if you use custom recall animations that take longer to complete.\n8.5s is a good value from my testing.",
+                     min = 1,
+                     max = 30,
+                     step = 0.5,
+                     getFunc = function () return DT.GetSetting("HouseUpdateDelay", 1.5) end,
+                     setFunc = function (value)
+                         DT.SetSetting("HouseUpdateDelay", value)
+                         DT.UPDATE_NEXT_HOUSE_DELAY = 1000 * value
+                     end,
+                     default = 1.5,
+                     requiresReload = false,
+                 })
+
+    table.insert(options,
+                 {
+                     type = "custom",
+                 })
+
     for index, opt in ipairs(options) do
         if "string" == type(opt.key) and nil ~= opt.default then
             DT.SetDefaultSetting(opt.key, opt.default)

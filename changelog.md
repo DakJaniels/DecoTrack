@@ -2,6 +2,14 @@
 
 All notable changes to DecoTrack will be documented in this file.
 
+## [2.7.2] - 2025-07-31
+### Added
+- Configurable house update delay setting for custom recall animations
+- Users can now adjust the timing between house visits during automatic updates
+### Changed
+- House update delay is now configurable via settings panel (1-30 seconds, 0.5 second steps)
+- Default delay remains 1.5 second.
+
 ## [2.6] - 2025-05-31
 ### Added
 - Multi-Server support

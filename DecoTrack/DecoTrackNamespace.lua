@@ -2,8 +2,8 @@
 DecoTrack =
 {
     ADDON_NAME = "DecoTrack",
-    ADDON_VERSION = "2.7.1",
-    ADDON_AUTHOR = "@Cardinal05, @Architectura",
+    ADDON_VERSION = "2.7.2",
+    ADDON_AUTHOR = "@dack_janiels, @Cardinal05, @Architectura",
     JUMP_TIMEOUT = 1000 * 15,
     UPDATE_DELAY = 1000 * 1,
     UPDATE_NEXT_HOUSE_DELAY = 1000 * 1.5,
