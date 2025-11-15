@@ -82,11 +82,12 @@ function DT.InitSettings()
                  {
                      type = "slider",
                      name = "House Update Delay",
+                     key = "HouseUpdateDelay",
                      tooltip = "The delay (in seconds) between visiting houses during automatic updates.\nIncrease this if you use custom recall animations that take longer to complete.\n8.5s is a good value from my testing.",
                      min = 1,
                      max = 30,
                      step = 0.5,
-                     getFunc = function () return DT.GetSetting("HouseUpdateDelay", 1.5) end,
+                     getFunc = function () return DT.GetSetting("HouseUpdateDelay") end,
                      setFunc = function (value)
                          DT.SetSetting("HouseUpdateDelay", value)
                          DT.UPDATE_NEXT_HOUSE_DELAY = 1000 * value

@@ -2,6 +2,10 @@
 
 All notable changes to DecoTrack will be documented in this file.
 
+## [2.7.3] - 2025-11-15
+### Fix
+- Default value was not being initialized for the House Update Delay.
+
 ## [2.7.2] - 2025-07-31
 ### Added
 - Configurable house update delay setting for custom recall animations

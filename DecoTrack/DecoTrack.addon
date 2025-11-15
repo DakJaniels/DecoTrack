@@ -1,9 +1,9 @@
 ﻿## Title: DecoTrack
-## Version: 2.7.2
-## AddOnVersion: 272
-## APIVersion: 101046 101047
+## Version: 2.7.3
+## AddOnVersion: 273
+## APIVersion: 101048 101049
 ## Author: @dack_janiels, @Cardinal05, @Architectura
-## DependsOn: LibAddonMenu-2.0>=40 LibChatMessage>=118
+## DependsOn: LibAddonMenu-2.0>=41 LibChatMessage>=118
 ## OptionalDependsOn: AwesomeGuildStore
 ## Description: DecoTrack keeps track of your furniture items across all of your characters, homes, storage coffers, storage chests and bank. Type /deco for help or access DecoTrack data easily via the Housing Hub provided by Essential Housing Tools.
 ## SavedVariables: DecoTrackSavedVars

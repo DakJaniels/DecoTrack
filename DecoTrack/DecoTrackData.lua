@@ -25,6 +25,12 @@ function DT.InitHouses(data)
     end
 end
 
+function DT.InitDataSettings(data)
+    if nil == data.Settings then
+        data.Settings = {}
+    end
+end
+
 function DT.UpdateTooltip(control, link)
     local addenda, total = DT.GenerateTooltipInfo(link)
 
